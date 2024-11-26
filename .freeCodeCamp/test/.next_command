@@ -66,3 +66,23 @@ __vsc_dbg_trap="$(__vsc_get_trap DEBUG)"
 trap '__vsc_preexec_all "$_"' DEBUG
 __vsc_original_prompt_command=${PROMPT_COMMAND:-}
 touch insert_data.sh
+git init
+git add origin https://github.com/nic-vo/fcc-psql-studentdb001.git
+git remote add origin https://github.com/nic-vo/fcc-psql-studentdb001.git
+git remote
+git remote -v
+git remote add save https://github.com/nic-vo/fcc-psql-studentdb001.git
+git branch
+git push save main
+git remote set-url save https://github.com/nic-vo/fcc-rdb-student01.git
+__vsc_prompt_cmd_original
+pg_dump students > save.sql
+rm save.sql
+pg_dump -h freecodecamp students > save.sql
+rm save.sql
+pg_dump -h 127.0.0.1 -p 5432 students > save.sql
+pg_dump -U freecodecamp -d students > save.sql
+git status
+git add .
+git restore --staged .
+git add .
